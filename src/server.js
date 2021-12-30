@@ -5,6 +5,7 @@ const express = require("express");
 const fs = require("fs");
 const { renderToString } = require("@vue/server-renderer");
 const manifest = require("./dist/server/ssr-manifest.json");
+const PORT = process.env.PORT || 8080;
 
 const server = express();
 
@@ -37,6 +38,6 @@ server.get("*", async (req, res) => {
   });
 });
 
-console.log("Сервер запущен по адресу: http://localhost:8080");
-
-server.listen(8080);
+server.listen(PORT, ()=>{
+  console.log(`Server: http://localhost:${PORT}`)
+})
